@@ -4,7 +4,7 @@
 <title>11 Hexbin maps - example 4</title>
 <meta charset="utf-8">
 
-<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="//d3js.org/d3.v5.min.js"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <script src="//d3js.org/d3-color.v1.min.js"></script> 
 <script src="//d3js.org/d3-interpolate.v1.min.js"></script> 
@@ -174,9 +174,7 @@ function prepData(topo) {
 /* Load and build steps */
 /* ==================== */
 
-function ready(error, us) {
-	if (error) throw error;
-
+function ready(us) {
 
 	var us = prepData(us);
 
@@ -204,9 +202,7 @@ function ready(error, us) {
 } // ready()
 
 // Load data sources
-d3.queue()
-	.defer(d3.json, 'data/us.json')
-	.await(ready);
+d3.json('data/us.json').then(ready);
 
 
 </script>
